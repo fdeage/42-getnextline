@@ -6,7 +6,7 @@
 /*   By: fdeage <fdeage@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/01/26 17:55:12 by fdeage            #+#    #+#             */
-/*   Updated: 2015/01/28 14:55:12 by fdeage           ###   ########.fr       */
+/*   Updated: 2015/02/05 12:26:05 by fdeage           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -113,7 +113,7 @@ int			get_next_line(int const fd, char **line)
 		return (-1);
 	if (search_newline(bufs[fd], line))
 		return (1);
-	while ((ret = read(fd, (bufs[fd])->buf, BUF_SIZE)) > 0)
+	while ((ret = (int)read(fd, (bufs[fd])->buf, BUF_SIZE)) > 0)
 	{
 		(bufs[fd])->buf[ret] = '\0';
 		(bufs[fd])->buf_len = ft_strlen((bufs[fd])->buf);
