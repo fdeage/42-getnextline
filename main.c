@@ -6,7 +6,7 @@
 /*   By: fdeage <fdeage@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/01/26 21:20:58 by fdeage            #+#    #+#             */
-/*   Updated: 2015/01/28 13:08:25 by fdeage           ###   ########.fr       */
+/*   Updated: 2015/02/05 13:12:02 by fdeage           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -102,7 +102,7 @@ int     main(int ac, char **av)
 			else if (fds[i] != 0)
 			{
 				line = (char *)malloc(50000);
-				ret[40] = read(fds[i], line, 50000);
+				ret[40] = (int)read(fds[i], line, 50000);
 				if (line[ret[40] -1] == '\n')
 				{
 					line[ret[40] - 1] = ' ';
