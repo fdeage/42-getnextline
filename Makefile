@@ -6,11 +6,11 @@
 #    By: fdeage <fdeage@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2015/01/20 13:20:39 by fdeage            #+#    #+#              #
-#    Updated: 2015/02/05 11:30:17 by fdeage           ###   ########.fr        #
+#    Updated: 2015/02/05 11:56:58 by fdeage           ###   ########.fr        #
 #                                                                              #
 #******************************************************************************#
 
-BIN = gnl_fdeage
+BIN = get_next_line
 FILE = $(GNL_$(V))
 
 V = NEW
