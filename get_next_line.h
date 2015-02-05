@@ -6,7 +6,7 @@
 /*   By: fdeage <fdeage@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2013/12/02 18:00:23 by fdeage            #+#    #+#             */
-/*   Updated: 2015/02/05 13:11:35 by fdeage           ###   ########.fr       */
+/*   Updated: 2015/02/05 13:15:00 by fdeage           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,9 +24,9 @@ typedef struct s_buf	t_buf;
 
 struct					s_buf
 {
-	size_t				buf_len;
 	char				*rem;
 	size_t				rem_len;
+	size_t				buf_len;
 	size_t				malloc_size;
 	size_t				search_index;
 	char				is_init;
