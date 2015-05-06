@@ -6,31 +6,27 @@
 #    By: fdeage <fdeage@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2015/01/20 13:20:39 by fdeage            #+#    #+#              #
-#    Updated: 2015/02/05 12:21:42 by fdeage           ###   ########.fr        #
+#    Updated: 2015/05/06 19:31:00 by fdeage           ###   ########.fr        #
 #                                                                              #
 #******************************************************************************#
 
 BIN = get_next_line
-FILE = $(GNL_$(V))
 
-V = NEW
-GNL_OLD = get_next_line$(OLD)
-GNL_NEW = get_next_line
-OLD = _old
+SRC = get_next_line.c	main.c
+OBJ = $(SRC:.c=.o)
 
-FLAGS = -Wall -Wextra
+INC = -I libft/includes/ -I.
+FLAGS = -Wall -Wextra -Werror
 EXTRAFLAGS = -pedantic -Weverything -Wno-missing-prototypes
 
 CC = clang
 
-all: $(FILE)
+all: $(BIN)
 
-$(FILE):
+$(BIN):		$(OBJ)
 			make -C libft/ fclean
 			make -C libft/
-			$(CC) -g $(FLAGS) -I libft/includes/ -I. -c $(FILE).c
-			$(CC) -g $(FLAGS) -I libft/includes/ -I. -c main.c
-			$(CC) -g -o $(BIN) $(FILE).o main.o -L libft/ -lft
+			$(CC) -g -o $(BIN) $(OBJ) -L libft/ -lft
 
 leaks:
 			leaks `ps | grep ./mult | head -n 1 | cut -d' ' -f1`
@@ -43,5 +39,8 @@ fclean:		clean
 
 re:			fclean all
 
-extra:   FLAGS += $(EXTRAFLAGS)
-extra:   re
+extra:		FLAGS += $(EXTRAFLAGS)
+extra:		re
+
+%.o:		%.c
+			$(CC) -g $(FLAGS) $(INC) -c $< -o $@

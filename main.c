@@ -6,7 +6,7 @@
 /*   By: fdeage <fdeage@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/01/26 21:20:58 by fdeage            #+#    #+#             */
-/*   Updated: 2015/02/12 15:20:34 by fdeage           ###   ########.fr       */
+/*   Updated: 2015/05/06 19:21:58 by fdeage           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,7 +73,7 @@ int     main(int ac, char **av)
 
 	if (ac < 2)
 	{
-		printf("Please type at least 1 filename as params: %s file1 [file2] ... [leaks]\n", av[0]);
+		printf("Type at least 1 filename as params: %s file1 [file2] ... [leaks]\n", av[0]);
 		return (EXIT_FAILURE);
 	}
 	else if (ac >= 40)
