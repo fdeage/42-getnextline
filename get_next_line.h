@@ -17,7 +17,7 @@
 # include <unistd.h>
 
 # define BUF_SIZE		1024
-# define MALLOC_SIZE	65536
+# define MALLOC_SIZE	4096
 # define MAX_FD			512
 
 typedef struct s_buf	t_buf;

@@ -1,7 +1,7 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   get_next_line_fd.c                                 :+:      :+:    :+:   */
+/*   get_next_line.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: fdeage <fdeage@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
@@ -51,7 +51,7 @@ static int	search_newline(t_buf *buf, char **line)
 				(buf->search_index + 1))))
 				return (false);
 			ft_strncpy(*line, buf->rem, buf->search_index);
-			(*line)[buf->search_index] = '\0';
+			(*line)[buf->search_index] = 0x0;
 			ft_strcpy(buf->rem, buf->rem + buf->search_index + 1);
 			buf->rem_len -= (buf->search_index + 1);
 			buf->search_index = 0;

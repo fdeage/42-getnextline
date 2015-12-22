@@ -15,7 +15,7 @@ BIN = get_next_line
 SRC = get_next_line.c	main.c
 OBJ = $(SRC:.c=.o)
 
-INC = -I libft/includes/ -I.
+INC = -I.
 FLAGS = -Wall -Wextra -Werror
 EXTRAFLAGS = -pedantic -Weverything -Wno-missing-prototypes
 
@@ -24,9 +24,7 @@ CC = clang
 all: $(BIN)
 
 $(BIN):		$(OBJ)
-			make -C libft/ fclean
-			make -C libft/
-			$(CC) -g -o $(BIN) $(OBJ) -L libft/ -lft
+			$(CC) -g -o $(BIN) $(OBJ) libft.a
 
 leaks:
 			leaks `ps | grep ./mult | head -n 1 | cut -d' ' -f1`
