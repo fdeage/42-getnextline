@@ -1,44 +1,29 @@
-#******************************************************************************#
-#                                                                              #
-#                                                         :::      ::::::::    #
-#    Makefile                                           :+:      :+:    :+:    #
-#                                                     +:+ +:+         +:+      #
-#    By: fdeage <fdeage@student.42.fr>              +#+  +:+       +#+         #
-#                                                 +#+#+#+#+#+   +#+            #
-#    Created: 2015/01/20 13:20:39 by fdeage            #+#    #+#              #
-#    Updated: 2015/05/06 19:31:00 by fdeage           ###   ########.fr        #
-#                                                                              #
-#******************************************************************************#
+NAME=gnl
+CC=gcc
+FLAGS=-Wall -Wextra -Werror
+EXTRAFLAGS=-pedantic -Weverything -Wno-missing-prototypes
+LIBFT=libft.a
+SRC=get_next_line.c main.c
+OBJ=$(SRC:.c=.o)
 
-BIN = get_next_line
+COL_B=\033[1;34m
+COL_G=\033[1;32m
+COL_RES=\033[0m
 
-SRC = get_next_line.c	main.c
-OBJ = $(SRC:.c=.o)
+all: $(NAME)
 
-INC = -I.
-FLAGS = -Wall -Wextra -Werror
-EXTRAFLAGS = -pedantic -Weverything -Wno-missing-prototypes
+$(NAME): $(OBJ)
+	$(CC) -o $(NAME) $(OBJ) $(LIBFT)
 
-CC = clang
-
-all: $(BIN)
-
-$(BIN):		$(OBJ)
-			$(CC) -g -o $(BIN) $(OBJ) libft.a
-
-leaks:
-			leaks `ps | grep ./mult | head -n 1 | cut -d' ' -f1`
+%.o: %.c
+	$(CC) $(FLAGS) -I. -c $< -o $@
 
 clean:
-			/bin/rm *.o
+	-@rm $(OBJ)
 
-fclean:		clean
-			/bin/rm $(BIN)
+fclean : clean
+	@rm $(NAME)
 
-re:			fclean all
+re: fclean $(NAME)
 
-extra:		FLAGS += $(EXTRAFLAGS)
-extra:		re
-
-%.o:		%.c
-			$(CC) -g $(FLAGS) $(INC) -c $< -o $@
+.PHONY: all clean fclean re

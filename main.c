@@ -19,49 +19,49 @@
 #include "libft.h"
 
 
-static void find_leaks(void)
+static void	find_leaks(void)
 {
 	system("leaks `ps | grep ./$1 | head -n 1 | cut -d' ' -f1`");
 	return ;
 }
 
-static void ft_put_string_nbr(int nbr, char *dest)
+static void	ft_put_string_nbr(int nbr, char *dest)
 {
-    if (nbr >= 0)
-    {
-        if (nbr < 10)
-        {
-            while (*dest)
-                ++dest;
-            *dest = (char)nbr + '0';
-        }
-        else
-        {
-            ft_put_string_nbr(nbr / 10, dest);
-            ft_put_string_nbr(nbr % 10, dest);
-        }
-    }
-    else
-    {
-        dest[0] = '-';
-        ft_put_string_nbr(-nbr, dest);
-    }
+	if (nbr >= 0)
+	{
+		if (nbr < 10)
+		{
+			while (*dest)
+				++dest;
+			*dest = (char)nbr + '0';
+		}
+		else
+		{
+			ft_put_string_nbr(nbr / 10, dest);
+			ft_put_string_nbr(nbr % 10, dest);
+		}
+	}
+	else
+	{
+		dest[0] = '-';
+		ft_put_string_nbr(-nbr, dest);
+	}
 }
 
-char        *ft_itoatab(int nbr, char *tab)
+char		*ft_itoatab(int nbr, char *tab)
 {
-    bzero(tab, 12);
-    if (nbr == -2147483648)
-    {
-        ft_put_string_nbr(nbr / 10, tab);
-        (tab)[10] = '8';
-    }
-    else
-        ft_put_string_nbr(nbr, tab);
-    return (tab);
+	bzero(tab, 12);
+	if (nbr == -2147483648)
+	{
+		ft_put_string_nbr(nbr / 10, tab);
+		(tab)[10] = '8';
+	}
+	else
+		ft_put_string_nbr(nbr, tab);
+	return (tab);
 }
 
-int     main(int ac, char **av)
+int			main(int ac, char **av)
 {
 	int			fds[40];
 	int			ret[41];
@@ -156,7 +156,7 @@ int     main(int ac, char **av)
 				ret[i] = get_next_line(fds[i], &line);
 
 				strcpy(color_string, "MAIN%d:  ret=\033[33m%d\033[0m, line=.\033[");
-                strcat(color_string, ft_itoatab(31 + i % 7, tab));
+				strcat(color_string, ft_itoatab(31 + i % 7, tab));
 				strcat(color_string, "m%s\033[0m. len=%d\n");
 
 				printf(color_string, i, ret[i], line, (int)strlen(line));

@@ -24,12 +24,12 @@ typedef struct s_buf	t_buf;
 
 struct					s_buf
 {
-	char				*rem;
+	char				is_init;
 	size_t				rem_len;
 	size_t				buf_len;
 	size_t				malloc_size;
 	size_t				search_index;
-	char				is_init;
+	char				*rem;
 	char				buf[BUF_SIZE + 1];
 };
 
