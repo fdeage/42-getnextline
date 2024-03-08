@@ -15,6 +15,11 @@ all: $(NAME)
 $(NAME): $(OBJ)
 	$(CC) -o $(NAME) $(OBJ) $(LIBFT)
 
+lib: $(OBJ)
+	@ar rc lib$(NAME) $^
+	@ranlib lib$(NAME)
+	@chmod +x lib$(NAME)
+
 %.o: %.c
 	$(CC) $(FLAGS) -I. -c $< -o $@
 
@@ -23,6 +28,7 @@ clean:
 
 fclean : clean
 	@rm $(NAME)
+	@rm lib$(NAME)
 
 re: fclean $(NAME)
 
